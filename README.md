@@ -29,12 +29,11 @@ git checkout -b draft
 **No `npm install` is required.** The `node:http` module used in this assignment is built into Node — you don't need to install anything to use it.
 
 > **Optional:** If you want your server to restart automatically when you save changes, you can install `nodemon`:
+>
 > ```sh
 > npm install --save-dev nodemon
 > npx nodemon server.js
 > ```
-
-
 
 ## Short Response Questions
 
@@ -60,16 +59,17 @@ Instead of automated tests, your grade on this assignment will be determined by 
 Feel free to mark these tasks as complete/incomplete as you go. Your instructor may modify your tasks as complete/incomplete when grading.
 
 This assignment has 11 requirements:
+
 - 4 server setup requirements
 - 2 request logging requirements
 - 5 routing requirements
 
 **Server Setup Requirements**
 
-- [ ] A `server.js` file exists at the root of the repository
-- [ ] `server.js` uses `require('node:http')` — no npm packages
-- [ ] `http.createServer()` is used to create the server
-- [ ] The server listens on port `8080`
+- [x] A `server.js` file exists at the root of the repository
+- [x] `server.js` uses `require('node:http')` — no npm packages
+- [x] `http.createServer()` is used to create the server
+- [x] The server listens on port `8080`
 
 **Request Logging Requirements**
 
@@ -95,14 +95,14 @@ Create a `server.js` file at the root of your repository.
 Inside it, use Node's built-in `node:http` module to create a server and start listening on port `8080`. You do not need to install anything — `node:http` is part of Node itself.
 
 ```js
-const http = require('node:http');
+const http = require("node:http");
 
 const server = http.createServer((req, res) => {
   // All request handling goes here
 });
 
 server.listen(8080, () => {
-  console.log('Server listening on http://localhost:8080');
+  console.log("Server listening on http://localhost:8080");
 });
 ```
 
@@ -119,6 +119,7 @@ Once your server is running, try visiting `http://localhost:8080` in your browse
 With `node:http`, **routing** means inspecting `req.method` and `req.url` inside the request listener and using `if/else` statements to decide how to respond.
 
 Two key methods on `res` send the response back:
+
 - **`res.writeHead(statusCode, headers)`** — sets the HTTP status code and response headers
 - **`res.end(body)`** — sends the response body (must be a string) and closes the connection
 
@@ -127,16 +128,19 @@ Two key methods on `res` send the response back:
 Your server needs to handle three routes plus a fallback:
 
 #### `GET /`
+
 - Status: `200`
 - Content-Type: `text/plain`
 - Body: A welcome message of your choosing
 
 #### `GET /api/joke`
+
 - Status: `200`
 - Content-Type: `application/json`
 - Body: `{ "setup": "...", "punchline": "..." }` with a joke of your choice
 
 #### `GET /api/rollDie`
+
 - Status: `200`
 - Content-Type: `application/json`
 - Body: `{ "rolls": [...] }` — an array of random integers between 1 and 6
@@ -146,16 +150,18 @@ This endpoint should read a `?quantity=` query parameter to determine how many d
 To parse the query string from `req.url`, use the built-in `URL` constructor:
 
 ```js
-const { pathname, searchParams } = new URL(req.url, 'http://localhost:8080');
-const quantity = parseInt(searchParams.get('quantity'));
+const { pathname, searchParams } = new URL(req.url, "http://localhost:8080");
+const quantity = parseInt(searchParams.get("quantity"));
 ```
 
 Example responses:
+
 - `/api/rollDie` → `{ "rolls": [4] }`
 - `/api/rollDie?quantity=3` → `{ "rolls": [5, 2, 3] }`
 - `/api/rollDie?quantity=foo` → `{ "rolls": [1] }`
 
 #### Fallback — All Other Routes
+
 - Status: `404`
 - Content-Type: `application/json`
 - Body: `{ "error": "Not found" }`
