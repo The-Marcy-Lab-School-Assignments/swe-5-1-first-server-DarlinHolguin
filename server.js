@@ -2,6 +2,8 @@ const http = require('node:http'); // importing HTTP module
 
 const server = http.createServer((req, res) => {
 
+    console.log(`${req.method} ${req.url} ${new Date().toISOString()}`);
+
     const { method, url } = req;
     if (method === 'GET' && url === '/') {
         res.writeHead(200, { 'Content-Type': 'text/plain' });
@@ -14,7 +16,7 @@ const server = http.createServer((req, res) => {
 
         const responseBody = JSON.stringify({
             setup: "Why'd the chicken cross the road?",
-            punchline: "IDK?"
+            punchline: "To get to the other side HAHAHAAHAHAHAHHAAHAHAHHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHA"
         });
 
         res.end(responseBody);
@@ -40,6 +42,9 @@ const server = http.createServer((req, res) => {
         res.end(JSON.stringify({ rolls }));
         return;
     }
+
+    res.writeHead(404, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ error: 'Not found' }));
 
 });
 

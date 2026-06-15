@@ -42,4 +42,4 @@ What is **routing** in the context of a server, and how do you implement it usin
 
 To implement routing using `node:http`, it would usually be done manually when checking for things like `req.method` & `req.url`.
 
-It is important to use `return` after calling `res.end()` because if you decide to not use it, then the function will continue to run, which could cause your code to return an error.
+It is important to use `return` after calling `res.end()` because it stops the code from running, if you weren't to use `return` after calling `res.end()` then other code in the callback could run after the response has been sent. In the case that code in the callback continues to run after the response is sent, it could potentially cause errors like trying to send headers twice, which would crash the server.

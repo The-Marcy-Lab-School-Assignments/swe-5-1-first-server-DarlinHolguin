@@ -73,16 +73,16 @@ This assignment has 11 requirements:
 
 **Request Logging Requirements**
 
-- [ ] Every incoming request logs the HTTP method, URL, and timestamp to the console
-- [ ] After logging, the server continues to process and respond to the request
+- [x] Every incoming request logs the HTTP method, URL, and timestamp to the console
+- [x] After logging, the server continues to process and respond to the request
 
 **Routing Requirements**
 
-- [ ] `GET /` responds with status `200` and a plain-text welcome message
-- [ ] `GET /api/joke` responds with status `200` and a JSON object containing `setup` and `punchline` fields
-- [ ] `GET /api/rollDie` responds with status `200` and a JSON object containing a `rolls` array with a random die roll (e.g. `{ rolls: [5] }`)
-- [ ] `GET /api/rollDie` uses a `?quantity=` query parameter to roll multiple dice (defaults to 1 if missing or invalid)
-- [ ] All unmatched routes respond with status `404` and a JSON error object
+- [x] `GET /` responds with status `200` and a plain-text welcome message
+- [x] `GET /api/joke` responds with status `200` and a JSON object containing `setup` and `punchline` fields
+- [x] `GET /api/rollDie` responds with status `200` and a JSON object containing a `rolls` array with a random die roll (e.g. `{ rolls: [5] }`)
+- [x] `GET /api/rollDie` uses a `?quantity=` query parameter to roll multiple dice (defaults to 1 if missing or invalid)
+- [x] All unmatched routes respond with status `404` and a JSON error object
 
 ---
 
