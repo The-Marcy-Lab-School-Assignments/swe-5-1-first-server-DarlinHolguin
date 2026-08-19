@@ -16,7 +16,7 @@ const server = http.createServer((req, res) => {
 
         const responseBody = JSON.stringify({
             setup: "Why'd the chicken cross the road?",
-            punchline: "To get to the other side HAHAHAAHAHAHAHHAAHAHAHHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHA"
+            punchline: "To get to the other side AHAHAHA IM SO FUNNY 🤣🤣😂😂"
         });
 
         res.end(responseBody);
